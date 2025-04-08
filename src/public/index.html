@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Application</title>
+  <link rel="stylesheet" href="index.css" />
+</head>
+<body>
+  <section id="auth" class="app">
+    <form class="__main-auth-method">
+      <label>
+        <input type="password" name="password" placeholder="Password" required />
+      </label>
+      <input type="submit" value="Login" onclick="loggedIn()"/>
+    </form>
+  </section>
+  <section id="app" class="hidden app">
+    
+  </section>
+  <script>
+    function loggedIn() {
+        document.getElementById('auth').classList.add('hidden');
+        document.getElementById('app').classList.remove('hidden');
+    }
+  </script>
+</body>
+</html>

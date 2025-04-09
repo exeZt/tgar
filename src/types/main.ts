@@ -48,3 +48,4 @@ export const testData: Array<ITestData> = [
 		response: "связаться с вашим руководителем."
 	}
 ]
+//INSERT INTO keywd (`id`, `name`,`keywords`,`emiton`) VALUES ('', '', '', '')

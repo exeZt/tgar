@@ -24,7 +24,7 @@ export default class Redis {
 		if (typeOfQuery === "set") {
 			await this.redisClient.set(key, value);
 		} else {
-			return await this.redisClient.get(key)
+			return await this.redisClient.get(key);
 		}
 	}
 

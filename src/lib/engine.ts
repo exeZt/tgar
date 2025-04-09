@@ -85,10 +85,6 @@ export namespace AppEngine {
 			});
 			return isCorrectPhrase === 2;
 		}
-
-		checkNeedStrict = () => {
-
-		}
 	}
 
 	export class RedisAppCommunication {

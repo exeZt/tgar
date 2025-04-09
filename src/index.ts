@@ -7,8 +7,8 @@ import {AppEngine} from "./lib/engine.ts";
 import express from "express";
 import bodyParser from "body-parser";
 import cors from "cors";
-import Redis from "./data/redis.ts";
 import path from "node:path";
+import router from "./api/application.ts";
 
 dotenv.config();
 
@@ -22,7 +22,7 @@ const client: TelegramBot = new TelegramBot(process.env.TELEGRAM_TOKEN as string
 client.on("text", async (message: Message): Promise<void> => {
 	const response = (new AppEngine.MessageResolver(client).resolve(message))
 
-	if (response){
+	if (response) {
 		await client.sendMessage(message.chat.id, response.response, {
 			reply_to_message_id: message.message_id,
 			parse_mode: "HTML",
@@ -30,7 +30,6 @@ client.on("text", async (message: Message): Promise<void> => {
 			disable_notification: true
 		});
 	}
-	// console.log(message);
 });
 
 const app = express();
@@ -40,14 +39,15 @@ app.use(bodyParser.json());
 app.use(express.urlencoded({ extended: false }));
 app.use(cors({origin: "*"}));
 app.use(express.static(path.join(__dirname, "public")));
+app.use('/api/', router);
 
 app.get('/', (req,res): void => {
 	res.status(200).sendFile(path.join(__dirname, "public/index.html"));
-})
+});
 
 app.listen(4554, (error: Error|undefined): void => {
 	if (error)
 		console.error(error);
 
 	console.log('app is running on port:4554 ');
-})
+});

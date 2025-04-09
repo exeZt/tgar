@@ -3,4 +3,5 @@ export type IKeywordType = {
 	name: string;
 	keywords: Array<string> | string;
 	emiton: number;
+	response: string;
 }

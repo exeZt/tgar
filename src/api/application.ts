@@ -13,12 +13,10 @@ router.use(bodyParser.json());
 router.use(express.urlencoded({ extended: false }));
 router.use(cors({origin: "*"}));
 
-
 router.get('/keywords/:token', (req,res) => {
 	console.log(req.params?.token);
-
 	res.status(200).send(JSON.stringify(dataHandler.query(`SELECT * FROM \`keywd\``, true)?.all()));
-})
+});
 
 router.post('/keywords/update', (req,res) => {
 	console.log(req.body);
@@ -29,7 +27,8 @@ router.post('/keywords/update', (req,res) => {
                      \`id\`='${item.id}',
                      \`name\`='${item.name}',
                      \`keywords\`='${item.keywords}',
-                     \`emiton\`='${item.emiton}' 
+                     \`emiton\`='${item.emiton}',
+                     \`response\`='${item.response}'
                  WHERE \`id\`='${item.id}';`)
 		});
 	} catch (e) {

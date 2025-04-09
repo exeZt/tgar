@@ -4,7 +4,9 @@
   "description": "Telegram alfa bot to resolve user expressions",
   "main": "src/index.ts",
   "scripts": {
-    "test": "npx tsx src/index.ts"
+    "test": "npx tsx src/index.ts",
+    "build": "echo \"Not ready\"",
+    "compile": "npx tsc"
   },
   "keywords": [
     "Alfa",

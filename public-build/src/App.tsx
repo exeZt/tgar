@@ -13,24 +13,31 @@ function App() {
   }, [])
 
   const cols: GridColDef<(typeof rowsData)[number]>[] = [
-    { field: 'id', headerName: 'ID', width: 150, sortable: true },
+    { field: 'id', headerName: 'id', width: 150, sortable: true },
     {
       field: 'name',
-      headerName: 'Name',
+      headerName: 'Название',
       width: 200,
       editable: true,
     },
     {
       field: 'keywords',
-      headerName: 'Keywords',
+      headerName: 'Ключевые слова',
       width: 300,
       editable: true,
     },
     {
       field: 'emiton',
-      headerName: 'Emit on',
+      headerName: 'Вызов при..',
       type: 'number',
       width: 100,
+      editable: true,
+    },
+    {
+      field: 'response',
+      headerName: 'Ответ',
+      type: 'string',
+      width: 300,
       editable: true,
     }
   ]
@@ -78,7 +85,7 @@ function App() {
         </form>
         <div>
           <input type='button' value='Принять' onClick={saveData}/>
-          <input type='button' alt='cancel' value='Отменить'/>
+          <input type='button' alt='cancel' value='Отменить' hidden/>
         </div>
       </section>
     </>

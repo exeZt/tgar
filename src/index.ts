@@ -3,12 +3,12 @@
 import dotenv from 'dotenv';
 import TelegramBot from "node-telegram-bot-api";
 import type {Message} from "node-telegram-bot-api";
-import {AppEngine} from "./lib/engine.ts";
+import {AppEngine} from "./lib/engine";
 import express from "express";
 import bodyParser from "body-parser";
 import cors from "cors";
 import path from "node:path";
-import router from "./api/application.ts";
+import router from "./api/application";
 
 dotenv.config();
 

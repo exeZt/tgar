@@ -1,0 +1,16 @@
+{
+  "MAIN_PAGE": {
+    "TABLE_FIELD_0" : "id",
+    "TABLE_FIELD_1" : "Назва",
+    "TABLE_FIELD_2" : "Ключавыя словы",
+    "TABLE_FIELD_3" : "Выклік пры..",
+    "TABLE_FIELD_4" : "Адказ",
+    "TOAST_FETCH_KEYWD_ERROR": "Адбылася памылка пры выкліку дадзеных",
+    "TOAST_SAVE_SUCCESSFULLY": "Дадзеныя захаваны",
+    "TOAST_SAVE_FAILED": "Адбылася памылка пры захаванні дадзеных",
+    "BUTTON_CANCEL_EDITION" : "Адмяніць",
+    "BUTTON_APPROVE_EDITION" : "Прыняць",
+    "LANGUAGE" : "Мова",
+    "TOAST_LANGUAGE_CHANGED": "Мова паспяхова зменена"
+  }
+}

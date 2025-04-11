@@ -6,7 +6,7 @@
   "scripts": {
     "test": "npx tsx src/index.ts",
     "build": "echo \"Not ready\"",
-    "compile": "npx tsc"
+    "compile": "tsc"
   },
   "keywords": [
     "Alfa",

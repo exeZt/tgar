@@ -1,11 +1,10 @@
 import TelegramBot from "node-telegram-bot-api";
 import type {Message} from "node-telegram-bot-api";
-import Redis from "../data/redis.ts";
-import Utils from "../utils.ts";
-import {ITestData, testData} from "../types/main.ts";
-import {JaroWinklerDistance, PorterStemmer, Stemmer, Tokenizer} from "natural";
-import SqliteApplicationHandler from "../data/sqlite.ts";
-import {IKeywordType} from "../shared/types.ts";
+import Redis from "../data/redis";
+import Utils from "../utils";
+import {JaroWinklerDistance, PorterStemmer, Stemmer} from "natural";
+import SqliteApplicationHandler from "../data/sqlite";
+import {IKeywordType} from "../shared/types";
 
 export namespace AppEngine {
 	export class MessageResolver {

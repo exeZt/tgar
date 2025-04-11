@@ -1,0 +1,16 @@
+{
+  "MAIN_PAGE": {
+    "TABLE_FIELD_0" : "id",
+    "TABLE_FIELD_1" : "Name",
+    "TABLE_FIELD_2" : "Keywords",
+    "TABLE_FIELD_3" : "Emit on",
+    "TABLE_FIELD_4" : "Response",
+    "TOAST_FETCH_KEYWD_ERROR": "Caught error via fetch keywords",
+    "TOAST_SAVE_SUCCESSFULLY": "Data saved!",
+    "TOAST_SAVE_FAILED": "Caught error via saving keywords",
+    "BUTTON_CANCEL_EDITION" : "Cancel",
+    "BUTTON_APPROVE_EDITION" : "Approve",
+    "LANGUAGE" : "Language",
+    "TOAST_LANGUAGE_CHANGED": "Language changed successfully"
+  }
+}

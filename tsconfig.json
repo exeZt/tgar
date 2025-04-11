@@ -7,14 +7,12 @@
     "strict": true,
     "skipLibCheck": true,
     "declaration": true,
-    "declarationDir": "/dist/@types/",
+    "declarationDir": "./dist/@types/",
     "declarationMap": true,
-    "allowImportingTsExtensions": true,
     "allowJs": false,
     "diagnostics": true,
-    "outDir": "/dist/",
-    "outFile": "/dist/app.js",
-    "rootDir": "src",
-    "experimentalDecorators": true,
-  }
+    "outDir": "./dist/",
+    "experimentalDecorators": true
+  },
+  "include": ["src/**/*"],
 }

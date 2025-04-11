@@ -1,8 +1,8 @@
 import express from "express";
 import bodyParser from "body-parser";
 import cors from "cors";
-import SqliteApplicationHandler from "../data/sqlite.ts";
-import {IKeywordType} from "../shared/types.ts";
+import SqliteApplicationHandler from "../data/sqlite";
+import {IKeywordType} from "../shared/types";
 
 const router = express.Router();
 const dataHandler = new SqliteApplicationHandler()
@@ -14,12 +14,10 @@ router.use(express.urlencoded({ extended: false }));
 router.use(cors({origin: "*"}));
 
 router.get('/keywords/:token', (req,res) => {
-	console.log(req.params?.token);
 	res.status(200).send(JSON.stringify(dataHandler.query(`SELECT * FROM \`keywd\``, true)?.all()));
 });
 
 router.post('/keywords/update', (req,res) => {
-	console.log(req.body);
 	try {
 		let data = req.body;
 		data.forEach((item: IKeywordType) => {

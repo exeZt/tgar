@@ -1,0 +1,16 @@
+{
+  "MAIN_PAGE": {
+    "TABLE_FIELD_0" : "id",
+    "TABLE_FIELD_1" : "Название",
+    "TABLE_FIELD_2" : "Ключевые слова",
+    "TABLE_FIELD_3" : "Вызов при..",
+    "TABLE_FIELD_4" : "Ответ",
+    "TOAST_FETCH_KEYWD_ERROR": "Произошла ошибка при вызове данных",
+    "TOAST_SAVE_SUCCESSFULLY": "Данные сохранены",
+    "TOAST_SAVE_FAILED": "Произошла ошибка при сохранении данных",
+    "BUTTON_CANCEL_EDITION" : "Отменить",
+    "BUTTON_APPROVE_EDITION" : "Принять",
+    "LANGUAGE" : "Язык",
+    "TOAST_LANGUAGE_CHANGED": "Язык успешно изменен"
+  }
+}

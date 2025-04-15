@@ -1,0 +1,4 @@
+{
+  "main" : "./bin/sbin/main.js",
+  "output" : "bin/sbin/main.blob"
+}

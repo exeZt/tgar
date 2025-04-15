@@ -1,5 +1,5 @@
 import {useEffect, useState} from 'react';
-import {DataGrid, GridColDef, GridRowId} from '@mui/x-data-grid';
+import {DataGrid, GridColDef, GridRowId, useGridApiRef} from '@mui/x-data-grid';
 import './index.css'
 import {IKeywordType} from "./shared/types.ts";
 import {toast, ToastContainer} from "react-toastify";
@@ -9,14 +9,15 @@ import lang_ru from "./assets/lang/ru.json";
 import {Language} from "./assets/lang/cfg.tsx";
 
 function App() {
+  const apiRef = useGridApiRef();
   const [rowsData, setRowsData] = useState<Array<IKeywordType>>([]);
   const [selectedLanguage, setSelectedLanguage] = useState(getCookie('lang') ?? 'en');
   const [langFile, setLangFile] = useState<typeof lang_ru>(lang_en);
+  const [btnState, setBtnState] = useState<boolean>(true);
 
   useEffect(() => {
-    if (typeof getCookie("lang") === "undefined"){
+    if (typeof getCookie("lang") === "undefined")
       document.cookie = `lang=${'en'}; path=/;`;
-    }
 
     fetch('http://localhost:4554/api/keywords/tok')
       .then((v) => v.json())
@@ -41,7 +42,7 @@ function App() {
     { field: 'id',
       headerName: langFile?.MAIN_PAGE.TABLE_FIELD_0,
       width: 150,
-      sortable: true
+      sortable: true,
     },
     {
       field: 'name',
@@ -92,6 +93,55 @@ function App() {
     }
   }
 
+  function deleteItems() {
+    const data: (string | number)[] = [];
+
+    apiRef.current.getSelectedRows().forEach((_, key: GridRowId) => {
+      data.push(key)
+    });
+
+    const xhr = new XMLHttpRequest();
+    xhr.responseType = 'json';
+    xhr.open("POST", 'http://localhost:4554/api/keywords/delete', true);
+    xhr.setRequestHeader("Content-type", "application/json");
+    xhr.send(JSON.stringify(data));
+    xhr.onload = () => {
+      if (xhr.status === 200) {
+        toast.success('Данные удалены успешно')
+      }
+    }
+  }
+
+  function addTemplateData<T = IKeywordType>(): void {
+    const xhr = new XMLHttpRequest();
+    const data: T | object = {};
+
+    cols.forEach((v) => {
+      if (v.field === "id"){
+        // eslint-disable-next-line @typescript-eslint/ban-ts-comment
+        // @ts-expect-error
+        data[v.field] = Math.floor(Math.random() * 100);
+      }
+      else {
+        // eslint-disable-next-line @typescript-eslint/ban-ts-comment
+        // @ts-expect-error
+        data[v.field] = '';
+      }
+    });
+
+    xhr.responseType = 'json';
+    xhr.open("POST", 'http://localhost:4554/api/keywords/add', true);
+    xhr.setRequestHeader("Content-type", "application/json");
+    xhr.send(JSON.stringify(data));
+    xhr.onload = () => {
+      if (xhr.status === 200) {
+        // eslint-disable-next-line @typescript-eslint/ban-ts-comment
+        // @ts-expect-error
+        setRowsData(prev => [...prev, data])
+      }
+    }
+  }
+
   return (
     <>
       <header>
@@ -112,6 +162,7 @@ function App() {
       <section className='app-content'>
         <form>
           <DataGrid
+            apiRef={apiRef}
             rows={rowsData}
             initialState={{
               pagination: {
@@ -125,13 +176,20 @@ function App() {
               updateRowData(updated, rowId)}
             columns={cols}
             pageSizeOptions={[5]}
+            onRowSelectionModelChange={(v) =>
+              v.length > 0
+                ? setBtnState(false)
+                : setBtnState(true)}
             checkboxSelection={true}
             disableRowSelectionOnClick={true}
           />
         </form>
         <div>
           <input type='button' value={langFile?.MAIN_PAGE.BUTTON_APPROVE_EDITION} onClick={saveData}/>
+          <input type='button' alt='add' value={'add'} onClick={addTemplateData}/>
           <input type='button' alt='cancel' value={langFile?.MAIN_PAGE.BUTTON_CANCEL_EDITION} hidden/>
+          <input type='button' alt='delete' onClick={deleteItems}
+                 value={langFile?.MAIN_PAGE.BUTTON_CANCEL_EDITION} hidden={btnState}/>
         </div>
       </section>
       <ToastContainer

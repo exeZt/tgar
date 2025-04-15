@@ -1,22 +1,11 @@
 [Unit]
-Description=AutoResolverTelegramBot
-Documentation=man:sshd(8) man:sshd_config(5)
-After=network.target auditd.service
-#ConditionPathExists=!/etc/ssh/sshd_not_to_be_run
+Description=Telegram bot to resolve user expressions
+After=default.target
 
 [Service]
-EnvironmentFile=-/etc/default/ssh
-#ExecStartPre=/usr/sbin/sshd -t
-ExecStart=/usr/sbin/sshd -D $SSHD_OPTS
-ExecReload=/usr/sbin/sshd -t
-ExecReload=/bin/kill -HUP $MAINPID
-KillMode=process
+User=root
 Restart=on-failure
-RestartPreventExitStatus=255
-Type=notify
-RuntimeDirectory=sshd
-RuntimeDirectoryMode=0755
+ExecStart=/usr/bin/tg-autoresolver
 
 [Install]
-WantedBy=multi-user.target
-Alias=sshd.service
+WantedBy=network.target

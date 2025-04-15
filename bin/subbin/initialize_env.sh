@@ -1,0 +1,9 @@
+#!/usr/bin/env bash
+ENV_FILE="${PWD}/.env";
+
+if [ ! "$ENV_FILE" ]; then
+  echo "TELEGRAM_TOKEN=YOUR_TELEGRAM_TOKEN" > $ENV_FILE;
+  echo "PRODUCTION=TRUE_|_FALSE" > $ENV_FILE;
+  echo "DATABASE_ENGINE=MYSQL|SQLITE|CUSTOM" > $ENV_FILE;
+  echo "FRONTEND_FRAME=REACT|VUE|CUSTOM" > $ENV_FILE;
+fi

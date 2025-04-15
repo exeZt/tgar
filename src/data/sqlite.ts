@@ -5,7 +5,7 @@ export default class SqliteApplicationHandler {
 	protected database: DatabaseSync;
 
 	constructor() {
-		this.database = new DatabaseSync(path.join(process.cwd(), `src/data/${'app'}`), {
+		this.database = new DatabaseSync(path.join(process.cwd(),`src/data/app`), {
 			open: true,
 		});
 	}

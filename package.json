@@ -5,8 +5,10 @@
   "main": "src/index.ts",
   "scripts": {
     "test": "npx tsx src/index.ts",
-    "build": "echo \"Not ready\"",
-    "compile": "tsc"
+    "build": "bash bin/build.sh",
+    "run": "bash bin/production.sh",
+    "compile": "tsc",
+    "ccompile": "esbuild src/index.ts --bundle --platform=node --outfile=bin/sbin/main.js"
   },
   "keywords": [
     "Alfa",
@@ -24,6 +26,7 @@
     "node-telegram-bot-api": "^0.66.0",
     "redis": "^4.7.0"
   },
+  "git": "",
   "files": [
     "src/**/*"
   ],

@@ -1,11 +1,14 @@
 import {DatabaseSync, StatementSync} from "node:sqlite";
 import path from "node:path";
+import dotenv from "dotenv";
+
+dotenv.config();
 
 export default class SqliteApplicationHandler {
 	protected database: DatabaseSync;
 
 	constructor() {
-		this.database = new DatabaseSync(path.join(process.cwd(),`src/data/app`), {
+		this.database = new DatabaseSync(path.resolve(process.cwd(), 'app'), {
 			open: true,
 		});
 	}

@@ -5,6 +5,7 @@ import {IKeywordType} from "./shared/types.ts";
 import {toast, ToastContainer} from "react-toastify";
 import {getCookie} from "./utils.ts";
 import lang_en from "./assets/lang/en.json";
+import cfg from "./app.config.ts";
 import lang_ru from "./assets/lang/ru.json";
 import {Language} from "./assets/lang/cfg.tsx";
 
@@ -19,7 +20,7 @@ function App() {
     if (typeof getCookie("lang") === "undefined")
       document.cookie = `lang=${'en'}; path=/;`;
 
-    fetch('http://localhost:4554/api/keywords/tok')
+    fetch(`${cfg.host}api/keywords/tok`)
       .then((v) => v.json())
       .then(data => setRowsData(data))
       .catch(() => toast.error(langFile?.MAIN_PAGE.TOAST_FETCH_KEYWD_ERROR));
@@ -82,7 +83,7 @@ function App() {
   function saveData(): void {
     const xhr = new XMLHttpRequest();
     xhr.responseType = 'json';
-    xhr.open("POST", 'http://localhost:4554/api/keywords/update', true);
+    xhr.open("POST", `${cfg.host}api/keywords/update`, true);
     xhr.setRequestHeader("Content-type", "application/json");
     xhr.send(JSON.stringify(rowsData));
     xhr.onload = () => {
@@ -102,7 +103,7 @@ function App() {
 
     const xhr = new XMLHttpRequest();
     xhr.responseType = 'json';
-    xhr.open("POST", 'http://localhost:4554/api/keywords/delete', true);
+    xhr.open("POST", `${cfg.host}api/keywords/delete`, true);
     xhr.setRequestHeader("Content-type", "application/json");
     xhr.send(JSON.stringify(data));
     xhr.onload = () => {
@@ -130,7 +131,7 @@ function App() {
     });
 
     xhr.responseType = 'json';
-    xhr.open("POST", 'http://localhost:4554/api/keywords/add', true);
+    xhr.open("POST", `${cfg.host}api/keywords/add`, true);
     xhr.setRequestHeader("Content-type", "application/json");
     xhr.send(JSON.stringify(data));
     xhr.onload = () => {

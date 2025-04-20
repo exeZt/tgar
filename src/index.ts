@@ -42,7 +42,8 @@ app.use(express.static(path.join(__dirname, "public")));
 app.use('/api/', router);
 
 app.get('/', (req,res): void => {
-	res.status(200).sendFile(path.join(__dirname, "public/index.html"));
+	res.status(200)
+		.sendFile(path.join(__dirname, "/public/index.html"));
 });
 
 app.listen(4554, (error: Error|undefined): void => {

@@ -8,7 +8,8 @@
     "build": "bash bin/build.sh",
     "run": "bash bin/production.sh",
     "compile": "tsc",
-    "ccompile": "esbuild src/index.ts --bundle --platform=node --outfile=bin/sbin/main.js"
+    "ccompile": "esbuild src/index.ts --bundle --platform=node --outfile=bin/sbin/main.js",
+    "pack": "bash bin/pack.sh"
   },
   "keywords": [
     "Alfa",
